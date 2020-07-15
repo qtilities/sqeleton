@@ -9,9 +9,8 @@ MainWindow::MainWindow(QWidget *parent)
     , layout(new QVBoxLayout(centerWidget))
     , button(new QPushButton("Click me!", centerWidget))
 {
-//  layout->setContentsMargins(6, 6, 6, 6);
+    layout->setContentsMargins(6, 6, 6, 6);
     layout->addWidget(button);
-    layout->setAlignment(button, Qt::AlignHCenter);
 
     centerWidget->setLayout(layout);
 }
