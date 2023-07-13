@@ -1,0 +1,11 @@
+root = true
+
+[*]
+charset = UTF-8
+insert_final_newline = 1
+indent_size = 4
+indent_style = space
+trim_trailing_whitespace = 1
+
+[*.{html,json,yml,sh}]
+indent_size = 2

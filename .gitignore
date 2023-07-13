@@ -1,2 +1,6 @@
-*build*
-*.user
+/*build*
+*.bak
+*.json
+*.qm
+*.user*
+resources/about.md
