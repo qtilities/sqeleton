@@ -43,7 +43,7 @@ cmake --build build
 
 ## Licenses
 
-- QRuler is licensed under the [MIT] license.
+- Sqeleton is licensed under the [MIT] license.
 - Application icon is from [Openclipart], [CC0-1.0] license.
 
 

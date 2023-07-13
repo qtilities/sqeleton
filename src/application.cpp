@@ -32,7 +32,7 @@ Qtilities::Application::Application(int argc, char *argv[])
 
 void Qtilities::Application::initLocale()
 {
-#if 0
+#if 1
     QLocale locale = QLocale::system();
 #else
     QLocale locale(QLocale("it"));
