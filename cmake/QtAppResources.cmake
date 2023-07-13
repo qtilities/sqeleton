@@ -77,13 +77,13 @@ if (UNIX AND NOT APPLE)
         UPDATE_TRANSLATIONS ${UPDATE_TRANSLATIONS}
         SOURCES             ${PROJECT_SOURCES} ${PROJECT_UI_FILES}
         TEMPLATE            "${PROJECT_ID}"
-        TRANSLATION_DIR     "resources/translations"
+    #   TRANSLATION_DIR     "resources/translations"
         INSTALL_DIR         "${CMAKE_INSTALL_DATADIR}/${PROJECT_ID}/translations"
     )
     lxqt_translate_desktop(PROJECT_DESKTOP_FILES
         DESKTOP_FILE_STEM   "${PROJECT_APPSTREAM_ID}"
         SOURCES             "${DESKTOP_FILE_IN}"
-        TRANSLATION_DIR     "resources/translations"
+    #   TRANSLATION_DIR     "resources/translations"
         USE_YAML
     )
 #===============================================================================

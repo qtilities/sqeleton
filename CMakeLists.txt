@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(Sqeleton VERSION 0.1.1 LANGUAGES CXX)
+project(ScreenGrab VERSION 0.1.1 LANGUAGES CXX)
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 set(CMAKE_CXX_STANDARD 17)
@@ -17,23 +17,23 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS LinguistTools Widgets)
 # Project files
 #===============================================================================
 set(PROJECT_UI_FILES
-    src/dialogabout.ui
-    src/dialogprefs.ui
-    src/mainwindow.ui
+    src/core/ui/dialogabout.ui
+    src/core/ui/dialogprefs.ui
+    src/core/ui/mainwindow.ui
 )
 set(PROJECT_HEADERS
-    src/application.hpp
-    src/dialogabout.hpp
-    src/dialogprefs.hpp
-    src/mainwindow.hpp
-    src/settings.hpp
+    src/core/ui/application.hpp
+    src/core/ui/dialogabout.hpp
+    src/core/ui/dialogprefs.hpp
+    src/core/ui/mainwindow.hpp
+    src/core/ui/settings.hpp
 )
 set(PROJECT_SOURCES
-    src/application.cpp
-    src/dialogabout.cpp
-    src/dialogprefs.cpp
-    src/mainwindow.cpp
-    src/settings.cpp
+    src/core/ui/application.cpp
+    src/core/ui/dialogabout.cpp
+    src/core/ui/dialogprefs.cpp
+    src/core/ui/mainwindow.cpp
+    src/core/ui/settings.cpp
 )
 set(PROJECT_RESOURCES
     resources/resources.qrc
