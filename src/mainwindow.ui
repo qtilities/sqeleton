@@ -20,7 +20,7 @@
       <x>10</x>
       <y>10</y>
       <width>241</width>
-      <height>71</height>
+      <height>91</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="layout">
@@ -83,7 +83,6 @@
    <addaction name="menuEdit"/>
    <addaction name="menuHelp"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
   <action name="actPrefs">
    <property name="icon">
     <iconset theme="preferences-system">
