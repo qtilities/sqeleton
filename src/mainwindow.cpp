@@ -56,17 +56,15 @@ Qtilities::MainWindow::~MainWindow() { delete ui; }
 void Qtilities::MainWindow::loadSettings()
 {
     Settings &settings = static_cast<Application *>(qApp)->settings();
-    setStyleSheet(QString("#MainWindow{background-color:rgb(%1,%2,%3);"
-                          "color:rgb(%4,%5,%6)}")
-                      .arg(settings.backgroundColor().red())
-                      .arg(settings.backgroundColor().green())
-                      .arg(settings.backgroundColor().blue())
-                      .arg(settings.foregroundColor().red())
-                      .arg(settings.foregroundColor().green())
-                      .arg(settings.foregroundColor().blue()));
-    resize(settings.size());
-    move(settings.position());
-    update();
+    ui->centralwidget->setStyleSheet(
+        QString("background-color:rgb(%1,%2,%3);"
+                "color:rgb(%4,%5,%6)}")
+            .arg(settings.backgroundColor().red())
+            .arg(settings.backgroundColor().green())
+            .arg(settings.backgroundColor().blue())
+            .arg(settings.foregroundColor().red())
+            .arg(settings.foregroundColor().green())
+            .arg(settings.foregroundColor().blue()));
 }
 
 void Qtilities::MainWindow::saveSettings()
