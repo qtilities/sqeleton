@@ -34,9 +34,8 @@ if (UNIX AND NOT APPLE)
     configure_file("resources/in/linux/application.desktop.in"
         "${DESKTOP_FILE_IN}" @ONLY
     )
-    set(PROJECT_ICON_FILE_NAME "${PROJECT_APPSTREAM_ID}.${PROJECT_ICON_FORMAT}")
     set(PROJECT_ICON_FILE_PATH "${CMAKE_INSTALL_FULL_DATADIR}/icons/hicolor/scalable/apps")
-    configure_file("resources/icons/application.icon.${PROJECT_ICON_FORMAT}"
+    configure_file("resources/icons/application.icon"
         "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_ICON_FILE_NAME}" COPYONLY
     )
 #===============================================================================
@@ -77,15 +76,16 @@ if (UNIX AND NOT APPLE)
         UPDATE_TRANSLATIONS ${UPDATE_TRANSLATIONS}
         SOURCES             ${PROJECT_SOURCES} ${PROJECT_UI_FILES}
         TEMPLATE            "${PROJECT_ID}"
-        TRANSLATION_DIR     "resources/translations"
+        TRANSLATION_DIR     "${PROJECT_TRANSLATIONS_DIR}"
         INSTALL_DIR         "${CMAKE_INSTALL_DATADIR}/${PROJECT_ID}/translations"
     )
     lxqt_translate_desktop(PROJECT_DESKTOP_FILES
         DESKTOP_FILE_STEM   "${PROJECT_APPSTREAM_ID}"
         SOURCES             "${DESKTOP_FILE_IN}"
-        TRANSLATION_DIR     "resources/translations"
+        TRANSLATION_DIR     "${PROJECT_TRANSLATIONS_DIR}"
         USE_YAML
     )
+    unset(DESKTOP_FILE_IN)
 #===============================================================================
 # Install
 #===============================================================================

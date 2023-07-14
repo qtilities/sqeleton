@@ -41,13 +41,17 @@ set(PROJECT_RESOURCES
 )
 set(PROJECT_OTHER_FILES
     .github/workflows/build.yml
+    .clang-format
+    .editorconfig
+    .gitattributes
+    .gitignore
     README.md
 )
 file(GLOB PROJECT_TRANSLATION_SOURCES "resources/translations/*")
 #===============================================================================
 # Configure files
 #===============================================================================
-include(${PROJECT_NAME}Config.cmake)
+include(Config.cmake)
 include(QtAppResources)
 
 set(PROJECT_ALL_FILES

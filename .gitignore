@@ -4,3 +4,4 @@
 *.qm
 *.user*
 resources/about.md
+PrintAllVariables.cmake
