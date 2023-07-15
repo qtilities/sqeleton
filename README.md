@@ -4,6 +4,8 @@
 
 Qt application template repository.
 
+See the related [website page] for further information.
+
 ## Features
 
 - Resource management following the Freedesktop [Desktop Entry] Specification
@@ -52,5 +54,6 @@ cmake --build build
 [CI]:               https://github.com/redtide/qruler/actions/workflows/build.yml/badge.svg
 [Desktop Entry]:    https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s02.html
 [LXQt build tools]: https://github.com/lxqt/lxqt-build-tools
-[MIT]:              LICENSE
+[MIT]:              COPYING
 [Openclipart]:      https://openclipart.org/
+[website page]:     https://qtilities.github.io/sqeleton/
