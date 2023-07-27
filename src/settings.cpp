@@ -22,16 +22,10 @@
     IN THE SOFTWARE.
 */
 #include "settings.hpp"
+#include "qtilities.hpp"
 
 #include <QApplication>
 #include <QSettings>
-
-namespace Default {
-static const QColor backgroundColor = QColor(0x92, 0xd7, 0xff);
-static const QColor foregroundColor = QColor(0x94, 0x00, 0x80);
-static const QPoint position = QPoint(200, 200);
-static const QSize size = QSize(240, 120);
-} // namespace Default
 
 Qtilities::Settings::Settings()
     : bgColor_(Default::backgroundColor)
@@ -47,18 +41,11 @@ void Qtilities::Settings::load()
                        QApplication::organizationName(),
                        QApplication::applicationDisplayName());
 
-    settings.beginGroup("Options");
-    bgColor_ = settings
-                   .value(QStringLiteral("BackgroundColor"),
-                          Default::backgroundColor)
-                   .value<QColor>();
-    fgColor_ = settings
-                   .value(QStringLiteral("ForegroundColor"),
-                          Default::foregroundColor)
-                   .value<QColor>();
-    position_ = settings.value(QStringLiteral("Position"), Default::position)
-                    .toPoint();
-    size_ = settings.value(QStringLiteral("Size"), Default::size).toSize();
+    settings.beginGroup("General");
+    bgColor_ = settings.value(QSL("BackgroundColor"), Default::backgroundColor).value<QColor>();
+    fgColor_ = settings.value(QSL("ForegroundColor"), Default::foregroundColor).value<QColor>();
+    position_ = settings.value(QSL("Position"), Default::position).toPoint();
+    size_ = settings.value(QSL("Size"), Default::size).toSize();
     settings.endGroup();
 }
 
@@ -68,10 +55,10 @@ void Qtilities::Settings::save()
                        QApplication::organizationName(),
                        QApplication::applicationDisplayName());
 
-    settings.beginGroup("Options");
-    settings.setValue(QStringLiteral("BackgroundColor"), bgColor_);
-    settings.setValue(QStringLiteral("ForegroundColor"), fgColor_);
-    settings.setValue(QStringLiteral("Position"), position_);
-    settings.setValue(QStringLiteral("Size"), size_);
+    settings.beginGroup("General");
+    settings.setValue(QSL("BackgroundColor"), bgColor_);
+    settings.setValue(QSL("ForegroundColor"), fgColor_);
+    settings.setValue(QSL("Position"), position_);
+    settings.setValue(QSL("Size"), size_);
     settings.endGroup();
 }

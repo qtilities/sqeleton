@@ -23,33 +23,23 @@
 */
 #include "application.hpp"
 #include "mainwindow.hpp"
+#include "dialogabout.hpp"
 #include "dialogprefs.hpp"
 
+#include <QKeySequence>
 #include <QLibraryInfo>
 #include <QLocale>
+#include <QShortcut>
 
 Qtilities::Application::Application(int argc, char *argv[])
     : QApplication(argc, argv)
 {
-    setApplicationName(APPLICATION_NAME);
+    setApplicationName(PROJECT_ID);
+    setApplicationDisplayName(APPLICATION_NAME);
     setOrganizationName(ORGANIZATION_NAME);
     setOrganizationDomain(ORGANIZATION_DOMAIN);
 
     initLocale();
-
-    QString icoCurPath = QCoreApplication::applicationDirPath() + '/'
-                         + QStringLiteral(PROJECT_ICON_NAME);
-    QString icoSysPath = QStringLiteral(PROJECT_ICON_SYSTEM_PATH);
-
-    // Try first to find the app icon in the current directory
-    appIcon_ = QIcon(icoCurPath);
-    if (appIcon_.isNull())
-        appIcon_ = QIcon(icoSysPath);
-
-        // UseHighDpiPixmaps is default from Qt6
-#if QT_VERSION < 0x060000
-    setAttribute(Qt::AA_UseHighDpiPixmaps, true);
-#endif
     initUi();
 }
 
@@ -74,8 +64,7 @@ void Qtilities::Application::initLocale()
         installTranslator(&qtTranslator_);
 
     // E.g. "<appname>_en"
-    translationsFileName
-        = QCoreApplication::applicationName().toLower() + '_' + locale.name();
+    translationsFileName = QCoreApplication::applicationName().toLower() + '_' + locale.name();
 
     // Try first in the same binary directory, in case we are building,
     // otherwise read from system data
@@ -85,8 +74,7 @@ void Qtilities::Application::initLocale()
     if (!isLoaded) {
         // "/usr/share/<appname>/translations
         isLoaded = translator_.load(translationsFileName,
-                                    QStringLiteral(PROJECT_DATA_DIR)
-                                        + QStringLiteral("/translations"));
+                                    QStringLiteral(PROJECT_DATA_DIR) + QStringLiteral("/translations"));
     }
     if (isLoaded)
         installTranslator(&translator_);
@@ -94,31 +82,47 @@ void Qtilities::Application::initLocale()
 
 void Qtilities::Application::initUi()
 {
+    // UseHighDpiPixmaps is default from Qt6
+#if QT_VERSION < 0x060000
+    setAttribute(Qt::AA_UseHighDpiPixmaps, true);
+#endif
     settings_.load();
 
-    mainWindow_ = new Qtilities::MainWindow;
-    dlgPrefs_ = new Qtilities::DialogPrefs(mainWindow_);
+    QString icoLocalPath
+        = QCoreApplication::applicationDirPath() + '/' + QStringLiteral(PROJECT_ICON_NAME);
+    QString icoSysPath = QStringLiteral(PROJECT_ICON_SYSTEM_PATH);
 
+    // Try first to find the app icon in the current/build directory
+    appIcon_ = QIcon(icoLocalPath);
+    if (appIcon_.isNull())
+        appIcon_ = QIcon(icoSysPath);
+
+    mainWindow_ = new Qtilities::MainWindow;
     mainWindow_->move(settings_.position());
     mainWindow_->resize(settings_.size());
+    mainWindow_->setWindowIcon(appIcon_);
+    mainWindow_->setWindowTitle(applicationDisplayName());
     mainWindow_->show();
 
-    connect(dlgPrefs_, &QDialog::accepted, mainWindow_,
-            &MainWindow::loadSettings);
-
-    connect(this, &QApplication::aboutToQuit, dlgPrefs_, &QObject::deleteLater);
-    connect(this, &QApplication::aboutToQuit, mainWindow_,
-            &QObject::deleteLater);
+    connect(this, &QApplication::aboutToQuit, mainWindow_, &QObject::deleteLater);
     connect(this, &QApplication::aboutToQuit, this, [this]() {
         mainWindow_->saveSettings();
         settings_.save();
     });
 }
 
+void Qtilities::Application::about()
+{
+    DialogAbout about(mainWindow_);
+    about.exec();
+}
+
 void Qtilities::Application::preferences()
 {
-    dlgPrefs_->loadSettings();
-    dlgPrefs_->show();
+    DialogPrefs prefs(mainWindow_);
+    connect(&prefs, &DialogPrefs::accepted, mainWindow_, &MainWindow::loadSettings);
+    prefs.loadSettings();
+    prefs.exec();
 }
 
 int main(int argc, char *argv[])

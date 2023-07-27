@@ -23,10 +23,11 @@
 */
 #include "dialogabout.hpp"
 #include "ui_dialogabout.h"
-#include "application.hpp"
-#include "settings.hpp"
 
 #include <QAbstractButton>
+#include <QFile>
+#include <QDebug>
+#include <QTextStream>
 
 Qtilities::DialogAbout::DialogAbout(QWidget *parent)
     : QDialog(parent)
@@ -37,30 +38,28 @@ Qtilities::DialogAbout::DialogAbout(QWidget *parent)
     ui->tabAuthors->setLayout(ui->layTabAuthors);
     ui->tabLicense->setLayout(ui->layTabLicense);
 
-    // TODO: Probably needed only on X11
-    Application *theApp = static_cast<Application *>(qApp);
+    QStringList list = {":/info", ":/authors", ":/license"};
+    QStringList texts;
 
-    connect(ui->buttonBox, &QDialogButtonBox::clicked, this,
-            &Qtilities::DialogAbout::close);
+    for (const QString &item : list) {
+        QFile f(item);
+        if (!f.open(QFile::ReadOnly | QFile::Text)) {
+            qDebug() << "Error loading about file" << '\n';
+            return;
+        }
+        QTextStream in(&f);
+        texts.append(in.readAll());
+        f.close();
+    }
+    QString toTranslate = texts.at(0);
+    ui->txtInfo->setMarkdown(toTranslate.replace("__AUTHOR__", tr("Author")));
+    ui->txtAuthors->setMarkdown(texts.at(1));
+    ui->txtLicense->setMarkdown(texts.at(2));
 
-    setWindowIcon(theApp->icon());
+    setWindowIcon(QIcon::fromTheme("help-about", QIcon(":/help-about")));
     setWindowTitle(tr("About"));
+
+    connect(ui->buttonBox, &QDialogButtonBox::clicked, this, &Qtilities::DialogAbout::close);
 }
 
 Qtilities::DialogAbout::~DialogAbout() { delete ui; }
-
-void Qtilities::DialogAbout::setInfoText(const QString &text)
-{
-    QString translated = text;
-    ui->txtInfo->setMarkdown(translated.replace("__AUTHOR__", tr("Author")));
-}
-
-void Qtilities::DialogAbout::setAuthorsText(const QString &text)
-{
-    ui->txtAuthors->setMarkdown(text);
-}
-
-void Qtilities::DialogAbout::setLicenseText(const QString &text)
-{
-    ui->txtLicense->setMarkdown(text);
-}

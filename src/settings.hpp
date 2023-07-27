@@ -28,6 +28,14 @@
 #include <QSize>
 
 namespace Qtilities {
+
+namespace Default {
+static constexpr QColor backgroundColor = QColor(0x92, 0xd7, 0xff);
+static constexpr QColor foregroundColor = QColor(0x94, 0x00, 0x80);
+static constexpr QPoint position = QPoint(200, 200);
+static constexpr QSize size = QSize(240, 120);
+} // namespace Default
+
 class Settings
 {
 public:

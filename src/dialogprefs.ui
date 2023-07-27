@@ -30,24 +30,26 @@
         </rect>
        </property>
        <layout class="QGridLayout" name="layColors">
-        <item row="1" column="0">
-         <widget class="QPushButton" name="pbnFg">
-          <property name="text">
-           <string>Text</string>
+        <property name="sizeConstraint">
+         <enum>QLayout::SetNoConstraint</enum>
+        </property>
+        <item row="0" column="1">
+         <widget class="Qtilities::LiteButton" name="lbnBgColor">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QLabel" name="lblColorFg">
           <property name="text">
            <string/>
           </property>
          </widget>
         </item>
-        <item row="0" column="0">
-         <widget class="QPushButton" name="pbnBg">
+        <item row="1" column="1">
+         <widget class="Qtilities::LiteButton" name="lbnFgColor">
           <property name="text">
-           <string>Background</string>
+           <string/>
           </property>
          </widget>
         </item>
@@ -64,16 +66,23 @@
           </property>
          </spacer>
         </item>
-        <item row="0" column="1">
-         <widget class="QLabel" name="lblColorBg">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="lblBackground">
           <property name="text">
-           <string/>
+           <string>Background</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="lblText">
+          <property name="text">
+           <string>Text</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
          </widget>
         </item>
@@ -100,6 +109,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Qtilities::LiteButton</class>
+   <extends>QLabel</extends>
+   <header>src/litebutton.hpp</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

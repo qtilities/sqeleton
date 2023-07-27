@@ -41,8 +41,6 @@ public:
     void saveSettings();
 
 private:
-    void about();
-
     Ui::MainWindow *ui;
 };
 } // namespace Qtilities

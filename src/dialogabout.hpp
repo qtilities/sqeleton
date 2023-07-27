@@ -37,10 +37,6 @@ public:
     explicit DialogAbout(QWidget *parent = nullptr);
     ~DialogAbout();
 
-    void setInfoText(const QString &);
-    void setAuthorsText(const QString &);
-    void setLicenseText(const QString &);
-
 private:
     Ui::DialogAbout *ui;
 };
