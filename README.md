@@ -1,6 +1,8 @@
 # Sqeleton
 
-[![CI]](https://github.com/redtide/qruler/actions/workflows/build.yml)
+[![CI]](https://github.com/qtilities/sqeleton/actions/workflows/build.yml)
+
+## Overview
 
 Qt application template repository.
 
@@ -16,31 +18,26 @@ See the related [website page] for further information.
 
 ## Dependencies
 
-Under Debian based systems:
+Runtime:
 
-- cmake (build only)
-- qtbase5-dev
-- qttools5-dev (build only)
+- Qt5/6 base
+
+Build:
+
+- CMake
+- Qt Linguist Tools
+- Git (optional, to pull latest VCS checkouts)
 
 ## Build
 
-First time download:
+`CMAKE_BUILD_TYPE` is usually set to `Release`, though `None` might be a [valid alternative][2].<br>
+`CMAKE_INSTALL_PREFIX` has to be set to `/usr` on most operating systems.<br>
+Using `sudo make install` is discouraged, instead use the system package manager where possible.
 
 ```bash
-git clone --recurse-submodules https://github.com/qtilities/qruler.git
-```
-
-Get missing `lxqt-build-tools` submodule:
-
-```bash
-git submodule update --init --recursive
-```
-
-then:
-
-```bash
-cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-cmake --build build
+cmake -B build -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr -W no-dev
+cmake --build build --verbose
+DESTDIR="$(pwd)/package" cmake --install build
 ```
 
 ## Licenses
