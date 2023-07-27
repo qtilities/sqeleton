@@ -34,12 +34,12 @@
         <translation>qrc:/license.html</translation>
     </message>
     <message>
-        <location filename="../../src/dialogabout.cpp" line="24"/>
+        <location filename="../../src/dialogabout.cpp" line="60"/>
         <source>About</source>
         <translation>Informazioni</translation>
     </message>
     <message>
-        <location filename="../../src/dialogabout.cpp" line="32"/>
+        <location filename="../../src/dialogabout.cpp" line="55"/>
         <source>Author</source>
         <translation>Autore</translation>
     </message>
@@ -52,17 +52,17 @@
         <translation>Colori</translation>
     </message>
     <message>
-        <location filename="../../src/dialogprefs.ui" line="36"/>
+        <location filename="../../src/dialogprefs.ui" line="82"/>
         <source>Text</source>
         <translation>Testo</translation>
     </message>
     <message>
-        <location filename="../../src/dialogprefs.ui" line="50"/>
+        <location filename="../../src/dialogprefs.ui" line="72"/>
         <source>Background</source>
         <translation>Sfondo</translation>
     </message>
     <message>
-        <location filename="../../src/dialogprefs.cpp" line="32"/>
+        <location filename="../../src/dialogprefs.cpp" line="41"/>
         <source>Preferences</source>
         <translation>Preferenze</translation>
     </message>
@@ -90,17 +90,17 @@
         <translation>&amp;File</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.ui" line="93"/>
+        <location filename="../../src/mainwindow.ui" line="92"/>
         <source>Pr&amp;eferences</source>
         <translation>Preferen&amp;ze</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.ui" line="108"/>
+        <location filename="../../src/mainwindow.ui" line="107"/>
         <source>About</source>
         <translation>Informazioni</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.ui" line="123"/>
+        <location filename="../../src/mainwindow.ui" line="122"/>
         <source>E&amp;xit</source>
         <translation>&amp;Esci</translation>
     </message>

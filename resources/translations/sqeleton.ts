@@ -34,12 +34,12 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/dialogabout.cpp" line="24"/>
+        <location filename="../../src/dialogabout.cpp" line="60"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/dialogabout.cpp" line="32"/>
+        <location filename="../../src/dialogabout.cpp" line="55"/>
         <source>Author</source>
         <translation type="unfinished"></translation>
     </message>
@@ -49,20 +49,20 @@
     <message>
         <location filename="../../src/dialogprefs.ui" line="21"/>
         <source>Colors</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/dialogprefs.ui" line="50"/>
+        <location filename="../../src/dialogprefs.ui" line="72"/>
         <source>Background</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/dialogprefs.ui" line="36"/>
+        <location filename="../../src/dialogprefs.ui" line="82"/>
         <source>Text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/dialogprefs.cpp" line="32"/>
+        <location filename="../../src/dialogprefs.cpp" line="41"/>
         <source>Preferences</source>
         <translation type="unfinished"></translation>
     </message>
@@ -90,17 +90,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.ui" line="93"/>
+        <location filename="../../src/mainwindow.ui" line="92"/>
         <source>Pr&amp;eferences</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.ui" line="108"/>
+        <location filename="../../src/mainwindow.ui" line="107"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow.ui" line="123"/>
+        <location filename="../../src/mainwindow.ui" line="122"/>
         <source>E&amp;xit</source>
         <translation type="unfinished"></translation>
     </message>
