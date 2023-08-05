@@ -48,7 +48,7 @@ DESTDIR="$(pwd)/package" cmake --install build
 
 [Appstream]:        https://freedesktop.org/software/appstream/docs/chap-Quickstart.html
 [CC0-1.0]:          https://creativecommons.org/publicdomain/zero/1.0/
-[CI]:               https://github.com/redtide/qruler/actions/workflows/build.yml/badge.svg
+[CI]:               https://github.com/qtilities/sqeleton/actions/workflows/build.yml/badge.svg
 [Desktop Entry]:    https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s02.html
 [LXQt build tools]: https://github.com/lxqt/lxqt-build-tools
 [MIT]:              COPYING
